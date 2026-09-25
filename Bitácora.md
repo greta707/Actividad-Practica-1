@@ -49,3 +49,10 @@ fecha: 24/9/2026
 
 Los valores asignados para los porcentajes de completitud los fui variando cosa que cuando me muestre el informe el programa pueda chequear que el ordenamiento sea correcto.
 
+fecha: 25/9/2026
+
+MODIFICACION 1: se pidio agregar un rol economista, lo unico que debo hacer es agregar la nueva clave y sus especificaciones al diccionario "roles" sin tener que modificar la funcion "generar_informe".
+
+MODIFICACION 2: si pidio agregar una nueva columna al diccionario original sin modificar los roles, lo unico por hacer es agregarlo al diccionario de diccionarios "columnas" y correr el programa para ver en que informes aparece. Con la prueba aparece unicamente en el informe general (cuando no se ingresa un rol) y no aparece en los demas informes.
+
+MODIFICACION 3: la ventaja de usar el filter() es que trabaja con lazy iterators en vez de construir y almacenar una lista inmmediatamente, ayuda a no saturar la memoria, y tiene una gran ventaja de rendimiento en caso de que el diccionario de columnas crezca

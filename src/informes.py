@@ -2,10 +2,10 @@
 
 columnas = {"PONDERA":{"tipo":"int", "completitud":60}, "ESTADO":{"tipo":"int", "completitud":77},
  "CAT_OCUP":{"tipo":"int", "completitud":100}, "EDAD":{"tipo":"int", "completitud": 100},
- "REGION":{"tipo":"int", "completitud":85}, "AGLOMERADO":{"tipo":"int", "completitud":100},
+ "REGION":{"tipo":"int", "completitud":95}, "AGLOMERADO":{"tipo":"int", "completitud":93},
 "MAS_500":{"tipo": "str", "completitud":97},"ANO4":{"tipo":"int", "completitud": 67}, 
 "TRIMESTRE":{"tipo":"int", "completitud":66}, "ITF":{"tipo":"int", "completitud":90}, 
-"GDECCFR":{"tipo":"int", "completitud":78}}
+"GDECCFR":{"tipo":"int", "completitud":78}, "NIVEL_ED":{"tipo":"int", "completitud":88}}#MODIFICACION 2 
 
 #armo un diccionario de diccionarios con el nombre de cada columna y sus datos
 
@@ -24,8 +24,15 @@ roles = {
     "analista":{
         "columnas":["ITF","GDECCFR","CAT_OCUP"],
         "criterio_orden": "completitud",
-        "forma": "B"}
-}
+        "forma": "B"},
+    "economista":{ #MODIFICACION 1
+        "columnas":["PONDERA", "ESTADO", "CAT_OCUP","REGION","AGLOMERADO","ANO4","TRIMESTRE","ITF","GDECCFR"],
+        "criterio_orden": "nombre",
+        "forma": "A",
+        "minimo_completitud": 90} 
+         
+     }
+
 
 
 def generar_informe (rol = None):
@@ -37,6 +44,7 @@ def generar_informe (rol = None):
         informe_sin_rol = sorted(columnas.items(), key=lambda elem:elem[1]["completitud"], reverse=True)
         return informe_sin_rol
     else:
+    
         datos_del_rol = roles[rol] #me da info del rol especifico
         porcentaje_minimo = datos_del_rol.get("minimo_completitud", 0) # busco si tiene minimo de completitud,
         #0 es por si no encuentra clave
